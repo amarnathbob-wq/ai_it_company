@@ -1,5 +1,5 @@
-name: xtech_ai_ceo_app
-description: Absolute Autonomous IT Agency Owner Hub with 2000 Feature Matrix.
+name: vikash_technical_hub_app
+description: Master Autonomous IT Agency Command Center for Vikash Technical Hub.
 version: 1.0.0+1
 
 environment:
@@ -9,4 +9,4 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
-  http: ^1.2.0     
+  http: ^1.2.0
