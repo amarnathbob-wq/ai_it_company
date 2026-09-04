@@ -1,0 +1,12 @@
+name: xtech_ai_ceo_app
+description: Absolute Autonomous IT Agency Owner Hub with 2000 Feature Matrix.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  http: ^1.2.0     
