@@ -1,4 +1,4 @@
-# Vikash Technical Hub - Final Production Sealed Configuration
+# Vikash Technical Hub - Final Standard Production Configuration
 workflows:
   android-workflow:
     name: Vikash Technical Hub Android Build
@@ -12,7 +12,6 @@ workflows:
     scripts:
       - name: Reset and Create Clean Android Assets
         script: |
-          # पुरानी कैश फाइलों को जड़ से डिलीट करके नया फ्रेश एंड्रॉइड इन्फ्रास्ट्रक्चर बनाना
           flutter clean
           flutter create . --platforms=android --org com.vikashtechnicalhub
       - name: Fetch Clean Dependencies
@@ -20,8 +19,7 @@ workflows:
           flutter pub get
       - name: Build Production Android APK
         script: |
-          # बिना किसी पुराने सिंक इश्यू के डायरेक्ट कंपाइल करना
-          cd android && ./gradlew clean && cd ..
-          flutter build apk --release --no-pub --no-validate-copy
+          # बिना किसी फालतू या पुराने फ्लैग के बिल्कुल साफ स्टैंडर्ड बिल्ड कमांड
+          flutter build apk --release
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
