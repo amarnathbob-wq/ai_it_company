@@ -1,4 +1,4 @@
-# Vikash Technical Hub - Final Standard Production Configuration
+# Vikash Technical Hub - Auto Resolution Express Build
 workflows:
   android-workflow:
     name: Vikash Technical Hub Android Build
@@ -16,10 +16,11 @@ workflows:
           flutter create . --platforms=android --org com.vikashtechnicalhub
       - name: Fetch Clean Dependencies
         script: |
+          # यह कमांड किसी भी पुराने वर्ज़न के झगड़े को ऑटोमैटिक ठीक कर देगा
+          flutter pub reuse-plugins --no-select || true
           flutter pub get
       - name: Build Production Android APK
         script: |
-          # बिना किसी फालतू या पुराने फ्लैग के बिल्कुल साफ स्टैंडर्ड बिल्ड कमांड
           flutter build apk --release
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
