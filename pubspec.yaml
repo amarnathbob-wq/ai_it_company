@@ -9,4 +9,4 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
-  http: ^1.2.0
+  http: any  # 'any' लिखने से एआई खुद सबसे नया और सही वर्ज़न चुन लेगा
