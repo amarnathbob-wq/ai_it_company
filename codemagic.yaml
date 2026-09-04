@@ -1,4 +1,4 @@
-# Vikash Technical Hub - Fixed Mobile Express Build Configuration
+# Vikash Technical Hub - Final Production Sealed Configuration
 workflows:
   android-workflow:
     name: Vikash Technical Hub Android Build
@@ -6,20 +6,22 @@ workflows:
     instance_type: mac_mini_m1
     environment:
       flutter: stable
-      android_ndk: stable
     triggering:
       events:
         - push
     scripts:
-      - name: Initialize Android Project Infrastructure
+      - name: Reset and Create Clean Android Assets
         script: |
+          # पुरानी कैश फाइलों को जड़ से डिलीट करके नया फ्रेश एंड्रॉइड इन्फ्रास्ट्रक्चर बनाना
+          flutter clean
           flutter create . --platforms=android --org com.vikashtechnicalhub
-      - name: Fetch Dependencies
+      - name: Fetch Clean Dependencies
         script: |
           flutter pub get
-      - name: Build Android APK
+      - name: Build Production Android APK
         script: |
-          # --no-pub के साथ बिल्ड करने से गड़गड़ी करने वाले नए बिल्ड टूल्स बायपास हो जाते हैं
+          # बिना किसी पुराने सिंक इश्यू के डायरेक्ट कंपाइल करना
+          cd android && ./gradlew clean && cd ..
           flutter build apk --release --no-pub --no-validate-copy
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
