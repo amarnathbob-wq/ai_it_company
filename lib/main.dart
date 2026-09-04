@@ -197,10 +197,13 @@ class _OwnerMasterDashboardState extends State<OwnerMasterDashboard> {
     );
   }
 
-  Widget _buildMetricCard(String title, String value) {
+    Widget _buildMetricCard(String title, String value) {
     return Container(
       padding: const EdgeInsets.all(8.0),
-      decoration: BoxDecoration(color: Colors.black45, BorderRadius.circular(8)),
+      decoration: BoxDecoration(
+        color: Colors.black45, 
+        borderRadius: BorderRadius.circular(8), // यहाँ छोटा b कर दिया गया है
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
