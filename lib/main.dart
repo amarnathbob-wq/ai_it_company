@@ -177,9 +177,39 @@ class _OwnerMasterDashboardState extends State<OwnerMasterDashboard> {
               itemCount: 100,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
               itemBuilder: (context, index) {
-                return Opacity(
+                                return Opacity(
                   opacity: 0.05,
                   child: Center(
                     child: Transform.rotate(
                       angle: -0.4,
                       child: const Text(
+                        'VIKASH_TECHNICAL_HUB_SECURE_NODE',
+                        style: TextStyle(fontSize: 8, color: Colors.white, decoration: TextDecoration.none),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMetricCard(String title, String value) {
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(color: Colors.black45, BorderRadius.circular(8)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title, style: const TextStyle(fontSize: 11, color: Colors.white54)),
+          const SizedBox(height: 2),
+          Text(value, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.cyan)),
+        ],
+      ),
+    );
+  }
+}
