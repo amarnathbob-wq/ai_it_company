@@ -153,71 +153,90 @@ class _DashboardState
     );
   }
   Widget _buildTree() {
+    final List<Map<String, dynamic>> cats = [
+      {'name': '01 • Sales', 'start': 1, 'end': 5},
+      {'name': '02 • Marketing', 'start': 6, 'end': 20},
+      {'name': '03 • Operations', 'start': 21, 'end': 50},
+      {'name': '04 • Finance', 'start': 51, 'end': 100},
+      {'name': '05 • Products', 'start': 101, 'end': 150},
+      {'name': '10 • Core Eng', 'start': 151, 'end': 2000},
+    ];
+
     return Container(
-      decoration: _paneBox(
-        const Color(0xff00E5FF),
-      ),
+      decoration: _paneBox(const Color(0xff00E5FF)),
       child: ListView(
-        children: List.generate(5, (i) {
-          int id = i + 1;
-          return ListTile(
+        children: cats.map((cat) {
+          int s = cat['start'];
+          int e = cat['end'];
+          int count = (e - s + 1).clamp(0, 10);
+          return ExpansionTile(
             dense: true,
-            title: Text(
-              'F#$id Dashboard',
-              style: const TextStyle(
-                color: Colors.white70,
-                fontSize: 9,
-              ),
-            ),
-            onTap: () {
-              setState(() {
-                currentFeature =
-                    FeatureEngine.getById(
-                        id);
-              });
-            },
+            title: Text(cat['name'],
+                style: const TextStyle(
+                    color: Colors.white70, fontSize: 8)),
+            children: List.generate(count, (index) {
+              int id = s + index;
+              return ListTile(
+                dense: true,
+                title: Text('F#$id Console',
+                    style: const TextStyle(
+                        color: Colors.white30, fontSize: 7)),
+                onTap: () {
+                  setState(() {
+                    currentFeature =
+                        FeatureEngine.getById(id);
+                  });
+                },
+              );
+            }),
           );
-        }),
+        }).toList(),
       ),
     );
   }
 
   Widget _buildCenter() {
     return Container(
-      decoration: _paneBox(
-        const Color(0xff00E5FF),
-      ),
+      decoration: _paneBox(const Color(0xff00E5FF)),
       padding: const EdgeInsets.all(6),
       child: Column(
         crossAxisAlignment:
             CrossAxisAlignment.start,
         children: [
-          Text(
-            'MODULE: #${currentFeature.id}',
-            style: const TextStyle(
-              color: Colors.white30,
-              fontSize: 8,
-            ),
-          ),
-          Text(
-            currentFeature.name,
-            style: const TextStyle(
-              color: Color(0xff00E5FF),
-              fontSize: 12,
-              fontWeight:
-                  FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            currentFeature.primaryMetric,
-            style: const TextStyle(
-              color: Colors.greenAccent,
-              fontSize: 14,
-              fontWeight:
-                  FontWeight.bold,
-            ),
-          ),
+          Text('CATEGORY: ${currentFeature.category}',
+              style: const TextStyle(
+                  color: Colors.white30, fontSize: 7)),
+          Text(currentFeature.name,
+              style: const TextStyle(
+                  color: Color(0xff00E5FF),
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold)),
+          const SizedBox(height: 6),
+          Text(currentFeature.metricLabel,
+              style: const TextStyle(
+                  color: Colors.white54, fontSize: 8)),
+          Text(currentFeature.primaryMetric,
+              style: const TextStyle(
+                  color: Colors.greenAccent,
+                  fontSize: 13,
+                  fontWeight: FontWeight.bold)),
+          const Spacer(),
+          Wrap(
+            spacing: 4,
+            runSpacing: 4,
+            children: currentFeature.actions.map((act) {
+              return ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xff141E30),
+                  padding: const EdgeInsets.all(4),
+                ),
+                onPressed: () {},
+                child: Text(act,
+                    style: const TextStyle(
+                        color: Colors.white, fontSize: 7)),
+              );
+            }).toList(),
+          )
         ],
       ),
     );
@@ -228,25 +247,27 @@ class _DashboardState
         const Color(0xff00E5FF),
       ),
       padding: const EdgeInsets.all(6),
-      child: const Column(
+      child: Column(
         crossAxisAlignment:
             CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'AI CONSOLE',
             style: TextStyle(
               color: Colors.white,
               fontSize: 8,
               fontWeight:
                   FontWeight.bold,
-                ),
+            ),
+          ),
+          const SizedBox(height: 4),
+          Expanded(
+            child: Text(
+              'Analyzing telemetry node for ${currentFeature.name}...',
+              style: const TextStyle(
+                color: Colors.white54,
+                fontSize: 7,
               ),
-          SizedBox(height: 4),
-          Text(
-            'Operational Mode',
-            style: TextStyle(
-              color: Colors.white54,
-              fontSize: 8,
             ),
           ),
         ],
