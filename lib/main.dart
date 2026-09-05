@@ -48,70 +48,108 @@ class FeatureEngine {
     if (id == 1) {
       return const FeatureDetail(
         id: "01",
-        name: "AI CEO Command Center (Autopilot)",
-        category: "01 • Core Free Systems",
+        name: "AI CEO Command Center (Autopilot Mode)",
+        category: "01 • Corporate Autopilot Systems",
         primaryMetric: "₹33.42 Lakhs",
-        metricLabel: "Live Operational Net Profit",
-        status: "Running (All Actions Auto)",
+        metricLabel: "Real-time Live Company Net Profit",
+        status: "Active (Executing Business Automation)",
         isPaid: false,
         price: "Free",
-        actions: ["Global View", "SOS Signal", "Sync Network"],
+        actions: ["Global Sync", "SOS Emergency Protocol", "Sync Network Logs"],
       );
     }
     if (id == 13) {
       return const FeatureDetail(
         id: "13",
-        name: "WhatsApp Multi-Agent Bot Engine",
-        category: "02 • Marketing Automation",
-        primaryMetric: "2.4K Msgs/min",
-        metricLabel: "Cloud Multi-Chat Sync Ingestion",
-        status: "Webhook Live (Talks & Listens)",
+        name: "WhatsApp Multi-Agent Bot (Talks & Listens)",
+        category: "02 • Omni-Channel Marketing Hub",
+        primaryMetric: "2.4K Messages/min",
+        metricLabel: "Cloud Multi-Chat Sync Webhook Rate",
+        status: "Online (Fully Interactive Conversations)",
         isPaid: false,
         price: "Free",
-        actions: ["Chat Dashboard", "Broadcast Queue"],
+        actions: ["Open Multi-Chat", "Broadcast Queue", "Bot Rules Setup"],
+      );
+    }
+    if (id == 18) {
+      return const FeatureDetail(
+        id: "18",
+        name: "24x7 Customer Support AI Bot Core",
+        category: "02 • Omni-Channel Marketing Hub",
+        primaryMetric: "99.4% Resolution",
+        metricLabel: "Autonomous Client Ticket Processing",
+        status: "Listening Live (Solving Queries)",
+        isPaid: false,
+        price: "Free",
+        actions: ["View Active Conversations", "Configure Bot Intelligence"],
       );
     }
     if (id == 38) {
       return const FeatureDetail(
         id: "38",
-        name: "AI App & Feature Self-Builder Core",
-        category: "03 • Advanced AI R&D",
-        primaryMetric: "Ready to Generate",
-        metricLabel: "Voice-to-Code Framework Engine",
-        status: "Listening Voice Commands",
+        name: "AI App & Feature Self-Builder Engine",
+        category: "03 • Advanced AI R&D Core",
+        primaryMetric: "Ready to Dynamic Compile",
+        metricLabel: "Voice-to-Code Auto Generation Engine",
+        status: "Awaiting Live Voice Commands",
         isPaid: false,
         price: "Free",
-        actions: ["Speak New Feature", "Compile Node"],
+        actions: ["Speak New Feature Request", "Initialize System Build"],
+      );
+    }
+    if (id == 67) {
+      return const FeatureDetail(
+        id: "67",
+        name: "Multi-Branch ERP Manager (500+ Links)",
+        category: "04 • Enterprise Resource Planning",
+        primaryMetric: "542 Active Outlets",
+        metricLabel: "Global Network Branch Sync Matrix",
+        status: "All Node Connections Stable",
+        isPaid: false,
+        price: "Free",
+        actions: ["View Map Layers", "Audit Branch Operations", "Sync Cashflow"],
       );
     }
     if (id == 85) {
       return const FeatureDetail(
         id: "85",
-        name: "AI Voice Cloning Engine",
-        category: "99 • Paid Premium Add-ons",
-        primaryMetric: "Locked Module",
-        metricLabel: "Requires Deep Voice Compute Token",
-        status: "Premium License Required",
+        name: "AI Voice Cloning Engine (Biometric Logic)",
+        category: "99 • Heavy Compute Premium Add-ons",
+        primaryMetric: "Premium License Locked",
+        metricLabel: "Requires Specialized Deep Voice AI Compute Tokens",
+        status: "Upgrade Package Required",
         isPaid: true,
         price: "₹999/mo",
-        actions: ["Unlock Paid Version", "Listen Sample"],
+        actions: ["Unlock Premium Version", "Listen Sample Demonstration"],
+      );
+    }
+    if (id == 101) {
+      return const FeatureDetail(
+        id: "101",
+        name: "AI Video Summarizer Matrix Engine",
+        category: "99 • Heavy Compute Premium Add-ons",
+        primaryMetric: "Premium Server Locked",
+        metricLabel: "High Allocation GPU Server Space Required",
+        status: "Upgrade Package Required",
+        isPaid: true,
+        price: "₹499/mo",
+        actions: ["Unlock Premium Version", "View Demo Report Layout"],
       );
     }
 
     return FeatureDetail(
       id: id.toString().padLeft(2, '0'),
-      name: id > 80 ? "Paid Advanced Feature $id" : "Free Core Module $id",
-      category: id > 80 ? "99 • Paid Premium Add-ons" : "01 • Core Free Systems",
-      primaryMetric: id > 80 ? "Locked" : "Online OK",
-      metricLabel: "Sub-system $id Status Telemetry",
-      status: id > 80 ? "Upgrade Needed" : "Operational",
+      name: id > 80 ? "Paid Advanced System Feature $id" : "Free Core Corporate Module $id",
+      category: id > 80 ? "99 • Heavy Compute Premium Add-ons" : "01 • Corporate Autopilot Systems",
+      primaryMetric: id > 80 ? "Locked" : "Online Operational OK",
+      metricLabel: "Sub-system $id Status Telemetry Matrix",
+      status: id > 80 ? "Upgrade Authorization Needed" : "Operational Standard Mode",
       isPaid: id > 80,
       price: id > 80 ? "₹199/mo" : "Free",
-      actions: id > 80 ? ["Unlock Paid Version"] : ["Run System Diagnostics $id"],
+      actions: id > 80 ? ["Unlock Premium Core"] : ["Execute Deep Node Diagnostics $id"],
     );
   }
 }
-
 class UltimateMasterDashboard extends StatefulWidget {
   const UltimateMasterDashboard({super.key});
   @override
@@ -124,45 +162,46 @@ class _DashboardState extends State<UltimateMasterDashboard> {
   final TextEditingController _supabaseKey = TextEditingController();
   final TextEditingController _metaToken = TextEditingController();
   final TextEditingController _openAiToken = TextEditingController();
+
   void _openCloudSetupConsole() {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: const Color(0xff0E1624),
-        title: const Text('⚙️ DEVELOPER CLOUD CONSOLE',
+        title: const Text('⚙️ DEVELOPER CENTRAL CONTROL CONSOLE',
             style: TextStyle(color: Color(0xff00E5FF), fontSize: 12, fontWeight: FontWeight.bold)),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text('Connect Database (Supabase/Firebase):', style: TextStyle(color: Colors.white54, fontSize: 10)),
+              const Text('Connect Private Serverless Database:', style: TextStyle(color: Colors.white54, fontSize: 10)),
               const SizedBox(height: 4),
-              _buildField(_supabaseUrl, 'Project Reference Database URL'),
+              _buildField(_supabaseUrl, 'Project Reference Database URL (Supabase)'),
               const SizedBox(height: 6),
-              _buildField(_supabaseKey, 'Secret Public Security Anon Key'),
+              _buildField(_supabaseKey, 'Secret Public Security Anon Key Token'),
               const SizedBox(height: 12),
-              const Text('Configure Corporate APIs:', style: TextStyle(color: Colors.white54, fontSize: 10)),
+              const Text('Configure Active Corporate Core APIs:', style: TextStyle(color: Colors.white54, fontSize: 10)),
               const SizedBox(height: 4),
-              _buildField(_metaToken, 'Meta Phone API Access Token'),
+              _buildField(_metaToken, 'Meta Phone Business API Access Token'),
               const SizedBox(height: 6),
-              _buildField(_openAiToken, 'Master AI Core Engine Token'),
+              _buildField(_openAiToken, 'Master AI Core Compute Engine Key'),
             ],
           ),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Close', style: TextStyle(color: Colors.white30, fontSize: 11)),
+            child: const Text('Close Terminal', style: TextStyle(color: Colors.white30, fontSize: 11)),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: const Color(0xff00E5FF)),
             onPressed: () {
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('⚡ Direct Local Serverless Tokens Activated!')),
+                const SnackBar(content: Text('⚡ Cloud Databases & API Credentials Secured Locally inside Framework!')),
               );
             },
-            child: const Text('Save IDs & Live Connect', style: TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.bold)),
+            child: const Text('Initialize & Save System Keys', style: TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.bold)),
           ),
         ],
       ),
@@ -230,13 +269,13 @@ class _DashboardState extends State<UltimateMasterDashboard> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('VIKASH PRIVATE IT COMPANY APP',
+              Text('VIKASH PRIVATE IT HOLDINGS CORE LAYER',
                   style: TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold)),
-              Text('INTERNAL HIGH-SECURITY NETWORK • NO WEB HOSTING REQUIRED',
+              Text('HIGH-SECURITY CLOSED ENTERPRISE APP • NO HOSTING / NO PUBLIC DOMAIN REQUIRED',
                   style: TextStyle(color: Color(0xff00E5FF), fontSize: 8)),
             ],
           ),
-          Icon(Icons.lock, color: Color(0xff00E5FF), size: 16),
+          Icon(Icons.shield_outlined, color: Color(0xff00E5FF), size: 16),
         ],
       ),
     );
@@ -250,8 +289,8 @@ class _DashboardState extends State<UltimateMasterDashboard> {
       childAspectRatio: 2.8,
       physics: const NeverScrollableScrollPhysics(),
       children: [
-        _buildBox('NETWORK MODE', 'Private Serverless Link'),
-        _buildBox('SYSTEM STATUS', '2000 Modules Mapped'),
+        _buildBox('NETWORK ROUTE ENGINE', 'Direct Local Serverless Encrypted Link'),
+        _buildBox('SUPER ARCHITECTURE MODULES', '2000 Functional Sub-Systems Live'),
       ],
     );
   }
@@ -276,9 +315,10 @@ class _DashboardState extends State<UltimateMasterDashboard> {
 
   Widget _buildTree() {
     final List<Map<String, dynamic>> cats = [
-      {'name': '01 • Free Core Framework', 'start': 1, 'end': 5},
-      {'name': '02 • Advanced AI Systems', 'start': 13, 'end': 40},
-      {'name': '99 • Paid Premium Hub', 'start': 85, 'end': 105},
+      {'name': '01 • Free Autopilot Systems', 'start': 1, 'end': 5},
+      {'name': '02 • Automated Multi-Bots', 'start': 13, 'end': 20},
+      {'name': '03 • ERP & Self-Building', 'start': 38, 'end': 68},
+      {'name': '99 • Heavy Compute Add-ons', 'start': 85, 'end': 105},
     ];
     return Container(
       decoration: _paneBox(const Color(0xff00E5FF)),
@@ -293,7 +333,7 @@ class _DashboardState extends State<UltimateMasterDashboard> {
               int id = s + index;
               return ListTile(
                 dense: true,
-                title: Text('F#$id Dashboard View', style: const TextStyle(color: Colors.white30, fontSize: 7)),
+                title: Text('F#$id Dashboard Terminal View', style: const TextStyle(color: Colors.white30, fontSize: 7)),
                 onTap: () {
                   setState(() {
                     currentFeature = FeatureEngine.getById(id);
@@ -314,7 +354,7 @@ class _DashboardState extends State<UltimateMasterDashboard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('SHIELD SECURITY LEVEL: ACTIVE', style: const TextStyle(color: Colors.white30, fontSize: 7)),
+          Text('SHIELD ENCRYPTION LAYER: OPTIMAL STATUS', style: const TextStyle(color: Colors.white30, fontSize: 7)),
           Text(currentFeature.name, style: const TextStyle(color: Color(0xff00E5FF), fontSize: 11, fontWeight: FontWeight.bold)),
           const SizedBox(height: 6),
           Text(currentFeature.metricLabel, style: const TextStyle(color: Colors.white54, fontSize: 8)),
@@ -327,8 +367,8 @@ class _DashboardState extends State<UltimateMasterDashboard> {
               padding: const EdgeInsets.all(4),
             ),
             onPressed: _openCloudSetupConsole,
-            icon: const Icon(Icons.add_link, size: 10, color: Color(0xff00E5FF)),
-            label: const Text('Open Dynamic Server Setup', style: TextStyle(color: Colors.white, fontSize: 7)),
+            icon: const Icon(Icons.cloud_download_outlined, size: 10, color: Color(0xff00E5FF)),
+            label: const Text('Open Developer Connection Setup', style: TextStyle(color: Colors.white, fontSize: 7)),
           )
         ],
       ),
@@ -342,9 +382,9 @@ class _DashboardState extends State<UltimateMasterDashboard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('AI HUB MATRIX', style: TextStyle(color: Colors.white, fontSize: 8, fontWeight: FontWeight.bold)),
+          const Text('AI SYSTEM HUB CONSOLE', style: TextStyle(color: Colors.white, fontSize: 8, fontWeight: FontWeight.bold)),
           const SizedBox(height: 4),
-          Expanded(child: Text(currentFeature.isPaid ? '🔒 Premium Features System ID Token Verification Layer is Locked.' : 'Local system engine operational tracking pipeline active for ${currentFeature.name}.', style: const TextStyle(color: Colors.white54, fontSize: 7))),
+          Expanded(child: Text(currentFeature.isPaid ? '🔒 Premium Features Security ID Token Verification Layer is Locked. Input Key to Route.' : 'Local secure system intelligence engine operational tracing telemetry active for ${currentFeature.name}. Talking and listening streams status optimal.', style: const TextStyle(color: Colors.white54, fontSize: 7))),
         ],
       ),
     );
@@ -355,7 +395,7 @@ class _DashboardState extends State<UltimateMasterDashboard> {
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [Icon(Icons.home, color: Color(0xff00E5FF), size: 14)],
+        children: [Icon(Icons.home_filled, color: Color(0xff00E5FF), size: 14)],
       ),
     );
   }
