@@ -123,19 +123,6 @@ class FeatureEngine {
         actions: ["Unlock Premium Version", "Listen Sample Demonstration"],
       );
     }
-    if (id == 101) {
-      return const FeatureDetail(
-        id: "101",
-        name: "AI Video Summarizer Matrix Engine",
-        category: "99 • Heavy Compute Premium Add-ons",
-        primaryMetric: "Premium Server Locked",
-        metricLabel: "High Allocation GPU Server Space Required",
-        status: "Upgrade Package Required",
-        isPaid: true,
-        price: "₹499/mo",
-        actions: ["Unlock Premium Version", "View Demo Report Layout"],
-      );
-    }
 
     return FeatureDetail(
       id: id.toString().padLeft(2, '0'),
@@ -158,6 +145,10 @@ class UltimateMasterDashboard extends StatefulWidget {
 
 class _DashboardState extends State<UltimateMasterDashboard> {
   FeatureDetail currentFeature = FeatureEngine.getById(1);
+  
+  // Real Interactive Switch State for AI Autopilot Button Control
+  bool isAutopilotOn = true;
+
   final TextEditingController _supabaseUrl = TextEditingController();
   final TextEditingController _supabaseKey = TextEditingController();
   final TextEditingController _metaToken = TextEditingController();
@@ -289,7 +280,39 @@ class _DashboardState extends State<UltimateMasterDashboard> {
       childAspectRatio: 2.8,
       physics: const NeverScrollableScrollPhysics(),
       children: [
-        _buildBox('NETWORK ROUTE ENGINE', 'Direct Local Serverless Encrypted Link'),
+        // Interactive Live Autopilot ON/OFF Toggle Card
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              isAutopilotOn = !isAutopilotOn;
+            });
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(isAutopilotOn ? '🤖 AI Autopilot System ENGAGED (Autonomous Mode)' : '🛑 AI Autopilot DISENGAGED (Manual Control Mode)')),
+            );
+          },
+          child: Container(
+            padding: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              color: isAutopilotOn ? const Color(0xff0E241B) : const Color(0xff240E14),
+              borderRadius: BorderRadius.circular(6),
+              border: Border.all(color: isAutopilotOn ? Colors.greenAccent : Colors.redAccent, width: 0.8),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('AI AUTOPILOT CONTROLLER', style: TextStyle(color: Colors.white54, fontSize: 7)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.between,
+                  children: [
+                    Text(isAutopilotOn ? 'STATUS: ON' : 'STATUS: OFF', style: TextStyle(color: isAutopilotOn ? Colors.greenAccent : Colors.redAccent, fontSize: 10, fontWeight: FontWeight.bold)),
+                    Icon(isAutopilotOn ? Icons.toggle_on : Icons.toggle_off, color: isAutopilotOn ? Colors.greenAccent : Colors.redAccent, size: 16),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
         _buildBox('SUPER ARCHITECTURE MODULES', '2000 Functional Sub-Systems Live'),
       ],
     );
@@ -352,7 +375,8 @@ class _DashboardState extends State<UltimateMasterDashboard> {
       decoration: _paneBox(const Color(0xff00E5FF)),
       padding: const EdgeInsets.all(6),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment:
+            CrossAxisAlignment.start,
         children: [
           Text('SHIELD ENCRYPTION LAYER: OPTIMAL STATUS', style: const TextStyle(color: Colors.white30, fontSize: 7)),
           Text(currentFeature.name, style: const TextStyle(color: Color(0xff00E5FF), fontSize: 11, fontWeight: FontWeight.bold)),
@@ -380,11 +404,12 @@ class _DashboardState extends State<UltimateMasterDashboard> {
       decoration: _paneBox(const Color(0xff00E5FF)),
       padding: const EdgeInsets.all(6),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment:
+            CrossAxisAlignment.start,
         children: [
           const Text('AI SYSTEM HUB CONSOLE', style: TextStyle(color: Colors.white, fontSize: 8, fontWeight: FontWeight.bold)),
           const SizedBox(height: 4),
-          Expanded(child: Text(currentFeature.isPaid ? '🔒 Premium Features Security ID Token Verification Layer is Locked. Input Key to Route.' : 'Local secure system intelligence engine operational tracing telemetry active for ${currentFeature.name}. Talking and listening streams status optimal.', style: const TextStyle(color: Colors.white54, fontSize: 7))),
+          Expanded(child: Text(currentFeature.isPaid ? '🔒 Premium Features Security ID Token Verification Layer is Locked. Input Key to Route.' : 'Local secure system intelligence engine operational tracking telemetry active for ${currentFeature.name}. Autopilot controller matrix is live.', style: const TextStyle(color: Colors.white54, fontSize: 7))),
         ],
       ),
     );
