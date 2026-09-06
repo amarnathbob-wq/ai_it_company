@@ -110,19 +110,6 @@ class FeatureEngine {
         actions: ["View Map Layers", "Audit Branch Operations", "Sync Cashflow"],
       );
     }
-    if (id == 85) {
-      return const FeatureDetail(
-        id: "85",
-        name: "AI Voice Cloning Engine (Biometric Logic)",
-        category: "99 • Heavy Compute Premium Add-ons",
-        primaryMetric: "Premium License Locked",
-        metricLabel: "Requires Specialized Deep Voice AI Compute Tokens",
-        status: "Upgrade Package Required",
-        isPaid: true,
-        price: "₹999/mo",
-        actions: ["Unlock Premium Version", "Listen Sample Demonstration"],
-      );
-    }
 
     return FeatureDetail(
       id: id.toString().padLeft(2, '0'),
@@ -145,8 +132,6 @@ class UltimateMasterDashboard extends StatefulWidget {
 
 class _DashboardState extends State<UltimateMasterDashboard> {
   FeatureDetail currentFeature = FeatureEngine.getById(1);
-  
-  // Real Interactive Switch State for AI Autopilot Button Control
   bool isAutopilotOn = true;
 
   final TextEditingController _supabaseUrl = TextEditingController();
@@ -165,14 +150,10 @@ class _DashboardState extends State<UltimateMasterDashboard> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text('Connect Private Serverless Database:', style: TextStyle(color: Colors.white54, fontSize: 10)),
-              const SizedBox(height: 4),
               _buildField(_supabaseUrl, 'Project Reference Database URL (Supabase)'),
               const SizedBox(height: 6),
               _buildField(_supabaseKey, 'Secret Public Security Anon Key Token'),
               const SizedBox(height: 12),
-              const Text('Configure Active Corporate Core APIs:', style: TextStyle(color: Colors.white54, fontSize: 10)),
-              const SizedBox(height: 4),
               _buildField(_metaToken, 'Meta Phone Business API Access Token'),
               const SizedBox(height: 6),
               _buildField(_openAiToken, 'Master AI Core Compute Engine Key'),
@@ -254,19 +235,19 @@ class _DashboardState extends State<UltimateMasterDashboard> {
         borderRadius: BorderRadius.circular(6),
         border: Border.all(color: const Color(0xff00E5FF).withOpacity(0.3)),
       ),
-      child: const Row(
-        mainAxisAlignment: MainAxisAlignment.between,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('VIKASH PRIVATE IT HOLDINGS CORE LAYER',
+              const Text('VIKASH PRIVATE IT HOLDINGS CORE LAYER',
                   style: TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold)),
               Text('HIGH-SECURITY CLOSED ENTERPRISE APP • NO HOSTING / NO PUBLIC DOMAIN REQUIRED',
-                  style: TextStyle(color: Color(0xff00E5FF), fontSize: 8)),
+                  style: TextStyle(color: const Color(0xff00E5FF), fontSize: 8)),
             ],
           ),
-          Icon(Icons.shield_outlined, color: Color(0xff00E5FF), size: 16),
+          const Icon(Icons.shield_outlined, color: Color(0xff00E5FF), size: 16),
         ],
       ),
     );
@@ -280,7 +261,6 @@ class _DashboardState extends State<UltimateMasterDashboard> {
       childAspectRatio: 2.8,
       physics: const NeverScrollableScrollPhysics(),
       children: [
-        // Interactive Live Autopilot ON/OFF Toggle Card
         GestureDetector(
           onTap: () {
             setState(() {
@@ -303,7 +283,7 @@ class _DashboardState extends State<UltimateMasterDashboard> {
               children: [
                 const Text('AI AUTOPILOT CONTROLLER', style: TextStyle(color: Colors.white54, fontSize: 7)),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.between,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(isAutopilotOn ? 'STATUS: ON' : 'STATUS: OFF', style: TextStyle(color: isAutopilotOn ? Colors.greenAccent : Colors.redAccent, fontSize: 10, fontWeight: FontWeight.bold)),
                     Icon(isAutopilotOn ? Icons.toggle_on : Icons.toggle_off, color: isAutopilotOn ? Colors.greenAccent : Colors.redAccent, size: 16),
@@ -337,35 +317,25 @@ class _DashboardState extends State<UltimateMasterDashboard> {
   }
 
   Widget _buildTree() {
-    final List<Map<String, dynamic>> cats = [
-      {'name': '01 • Free Autopilot Systems', 'start': 1, 'end': 5},
-      {'name': '02 • Automated Multi-Bots', 'start': 13, 'end': 20},
-      {'name': '03 • ERP & Self-Building', 'start': 38, 'end': 68},
-      {'name': '99 • Heavy Compute Add-ons', 'start': 85, 'end': 105},
-    ];
     return Container(
       decoration: _paneBox(const Color(0xff00E5FF)),
-      child: ListView(
-        children: cats.map((cat) {
-          int s = cat['start'];
-          int e = cat['end'];
-          return ExpansionTile(
+      child: ListView.builder(
+        itemCount: 2000,
+        itemBuilder: (context, index) {
+          int id = index + 1;
+          return ListTile(
             dense: true,
-            title: Text(cat['name'], style: const TextStyle(color: Colors.white70, fontSize: 8)),
-            children: List.generate((e - s + 1).clamp(0, 10), (index) {
-              int id = s + index;
-              return ListTile(
-                dense: true,
-                title: Text('F#$id Dashboard Terminal View', style: const TextStyle(color: Colors.white30, fontSize: 7)),
-                onTap: () {
-                  setState(() {
-                    currentFeature = FeatureEngine.getById(id);
-                  });
-                },
-              );
-            }),
+            visualDensity: VisualDensity.compact,
+            title: Text('F#$id Dashboard Terminal', 
+                style: const TextStyle(color: Colors.white70, fontSize: 8)),
+            trailing: const Icon(Icons.arrow_forward_ios, size: 6, color: Colors.white30),
+            onTap: () {
+              setState(() {
+                currentFeature = FeatureEngine.getById(id);
+              });
+            },
           );
-        }).toList(),
+        },
       ),
     );
   }
@@ -378,7 +348,7 @@ class _DashboardState extends State<UltimateMasterDashboard> {
         crossAxisAlignment:
             CrossAxisAlignment.start,
         children: [
-          Text('SHIELD ENCRYPTION LAYER: OPTIMAL STATUS', style: const TextStyle(color: Colors.white30, fontSize: 7)),
+          const Text('SHIELD ENCRYPTION LAYER: OPTIMAL STATUS', style: TextStyle(color: Colors.white30, fontSize: 7)),
           Text(currentFeature.name, style: const TextStyle(color: Color(0xff00E5FF), fontSize: 11, fontWeight: FontWeight.bold)),
           const SizedBox(height: 6),
           Text(currentFeature.metricLabel, style: const TextStyle(color: Colors.white54, fontSize: 8)),
