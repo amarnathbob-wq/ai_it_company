@@ -1,5 +1,6 @@
-name: vikash_technical_hub_app
-description: Master Autonomous IT Agency Command Center for Vikash Technical Hub.
+name: vikas_technical_hub
+description: "AI CEO Super App"
+publish_to: 'none'
 version: 1.0.0+1
 
 environment:
@@ -8,5 +9,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.6
-  http: any  # 'any' लिखने से एआई खुद सबसे नया और सही वर्ज़न चुन लेगा
+  supabase_flutter: 2.8.0
+  encrypt: 5.0.3
+  local_auth: 2.1.8
+  webview_flutter: 4.4.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
